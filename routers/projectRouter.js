@@ -85,53 +85,53 @@ router.get('/:id/actions', (req, res) => {
 
 // POST /api/projects/:id/actions endpoint to Create a new action by project - FUNCTIONAL
 router.post('/:id/actions', validateAction, (req, res) => {
-    const actionInfo = { ...req.body, project_id: req.params.id };
-  
-    Projects.getProjectActions(req.params.id)
-      .then(actions => {
-        if (actions[0]) {
-          Actions.insert(actionInfo)
-            .then(action => {
-              if (action) {
-                res.status(210).json(action);
-              } else {
-                res
-                  .status(404)
-                  .json({ message: 'The project could not be found' });
-              }
-            })
-            .catch(err => {
-              console.log(err);
+  const actionInfo = { ...req.body, project_id: req.params.id };
+
+  Projects.getProjectActions(req.params.id)
+    .then(actions => {
+      if (actions[0]) {
+        Actions.insert(actionInfo)
+          .then(action => {
+            if (action) {
+              res.status(210).json(action);
+            } else {
               res
-                .status(500)
-                .json({ message: 'Error adding the action for the project' });
-            });
-        } else {
-          res.status(404).json({ message: 'The project could not be found' });
-        }
-      })
-      .catch(err => {
-        console.log(err);
-        res
-          .status(500)
-          .json({ message: 'Error getting the actions for the project' });
-      });
-  
-    // Actions.insert(actionInfo)
-    //   .then(action => {
-    //     if (action) {
-    //       res.status(210).json(action);
-    //     } else {
-    //       res.status(404).json({ message: 'The project could not be found' });
-    //     }
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     res
-    //       .status(500)
-    //       .json({ message: 'Error adding the action for the project' });
-    //   });
-  });
+                .status(404)
+                .json({ message: 'The project could not be found' });
+            }
+          })
+          .catch(err => {
+            console.log(err);
+            res
+              .status(500)
+              .json({ message: 'Error adding the action for the project' });
+          });
+      } else {
+        res.status(404).json({ message: 'The project could not be found' });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res
+        .status(500)
+        .json({ message: 'Error getting the actions for the project' });
+    });
+
+  // Actions.insert(actionInfo)
+  //   .then(action => {
+  //     if (action) {
+  //       res.status(210).json(action);
+  //     } else {
+  //       res.status(404).json({ message: 'The project could not be found' });
+  //     }
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //     res
+  //       .status(500)
+  //       .json({ message: 'Error adding the action for the project' });
+  //   });
+});
 
 // **********************************************************************
 
