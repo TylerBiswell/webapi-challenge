@@ -45,21 +45,32 @@ function validateProjectId(req, res, next) {
   next();
 }
 
+// Validate  on create new project request - NEEDS TEST
 function validateProject(req, res, next) {
-    if (!Object.keys(req.body).length) {
-        res.status(400).json({ message: 'Missing project data!' });
-      } else if (!req.body.name) {
-        res.status(400).json({ message: 'Missing required "name" field!' });
-      } else if (!req.body.description) {
-        res.status(400).json({ message: 'Missing required "description" field!' });
-      } else {
-        next();
-      }
-      // next();
+  if (!Object.keys(req.body).length) {
+    res.status(400).json({ message: 'Missing project data!' });
+  } else if (!req.body.name) {
+    res.status(400).json({ message: 'Missing required "name" field!' });
+  } else if (!req.body.description) {
+    res.status(400).json({ message: 'Missing required "description" field!' });
+  } else {
+    next();
+  }
+  // next();
 }
 
+// Validate body on create new action request - NEEDS TEST
 function validateAction(req, res, next) {
-  next();
+  if (!Object.keys(req.body).length) {
+    res.status(400).json({ message: 'Missing action data!' });
+  } else if (!req.body.description) {
+    res.status(400).json({ message: 'Missing required "description" field!' });
+  } else if (!req.body.notes) {
+    res.status(400).json({ message: 'Missing required "notes" field!' });
+  } else {
+    next();
+  }
+  // next();
 }
 
 // **********************************************************************
