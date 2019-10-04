@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+- Two features of Express that we learned about this week are **routing** and **convenience helpers**. **Routing** is a way to select which request handler function is executed based on the URL visited and the HTTP method used, and it provides a way to break an application into smaller parts based on the route. **Convenience helpers** are added by Express to provide out-of-the-box functionality to make writing web applications and API servers easier.
+
 - [ ] Describe Middleware?
+
+- Express middleware adds features and functionality to Express; it can be thought of as an array of functions that are executed in the order in which they're introduced into the server code. When writing Web APIs, we can use middleware for a variety of tasks, from parsing JSON content, to logging request information, to configuring security headers, to even handling routes.
 
 - [ ] Describe a Resource?
 
+ - A resource is the fundamental concept in RESTful Web API. A resource is an object with a type, associated data, relationships to other resources, and a set of methods that operate on the resource. Everything is a resource in RESTful Web API, and each resource is accessible via a unique URI. 
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+ - The API can return a **2xx status code** to help clients know if a request was successful. A status code of **200 (OK)** indicates that the REST API successfully carried out the action that the client requested. A status code of **201 (Created)** indicates that a resource was created inside a collection. A status code of **202 (Accepted)** indicates that a request has been accepted for processing, but that the processing hasn't yet been completed; it's typically used for actions that take a while to process. A status code of **204 (No Content)** indicates when the REST API declines to send back a status message.
+
 - [ ] How can we partition our application into sub-applications?
+
+- We can partition our application into sub-applications by using **Express Routers** to make it more modular and easier to maintain. We can use a central router that represents our API and have that router import the routes for endpoints for specific resources, each of which can be handled in a different file.
 
 ## Project Setup
 
